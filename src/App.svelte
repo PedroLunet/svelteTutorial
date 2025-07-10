@@ -1,6 +1,17 @@
 <script>
-	let name = '@significa';
-	let beltColor = 'red';
+	import { bind } from 'svelte/internal';
+
+	let firstName = '@significa';
+	let lastName = 'svelte';
+	let beltColor = 'black';
+
+	$: fullName = `${firstName} ${lastName}`;
+	$: {
+		if (beltColor.length == 6) {
+			console.log('Belt color is a valid hex code');
+		}
+	}
+
 	const handleClick = () => {
 		beltColor = beltColor === 'red' ? 'blue' : 'red';
 	};
@@ -11,11 +22,10 @@
 </script>
 
 <main>
-	<h1>Hello {name}!</h1>
-	<p style="color:{beltColor}">{beltColor} belt!</p>
-	<button on:click={handleClick}> update belt color</button>
-	<!-- <input on:input={handleInput} type=text value={beltColor} /> -->
-	<input bind:value={beltColor} />
+	<p>{fullName} - {beltColor} belt!</p>
+	<input type="text" bind:value={firstName} />
+	<input type="text" bind:value={lastName} />
+	<input type="text" bind:value={beltColor} />
 </main>
 
 <style>
