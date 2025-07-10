@@ -1,4 +1,7 @@
 <script>
+	import './Modal.svelte';
+	import Modal from './Modal.svelte';
+
 	let people = [
 		{ name: 'yoshi', beltColor: 'black', age: 21, id: 1 },
 		{ name: 'Mario', beltColor: 'red', age: 22, id: 2 },
@@ -7,21 +10,10 @@
 	const handleDelete = (id) => {
 		people = people.filter((person) => person.id !== id);
 	};
-
-	let num = 25;
 </script>
 
-{#if num > 20}
-	<p>Greater than 20.</p>
-{:else if num > 5}
-	<p>Greater than 5 but less than or equal to 20.</p>
-{:else if num > 0}
-	<p>Greater than 0 but less than or equal to 5.</p>
-{:else}
-	<p>Less than or equal to 0.</p>
-{/if}
-
 <main>
+	<Modal />
 	{#each people as person (person.id)}
 		<div>
 			<h4>{person.name}</h4>
