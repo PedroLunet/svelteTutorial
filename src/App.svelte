@@ -18,7 +18,7 @@ const toggleModal = () => {
 </script>
 <Modal message="I'm a prop" {showModal} on:click={toggleModal}/>
 <main>
-	<button on:click={toggleModal}>
+	<button on:click|once={toggleModal}>
 		Toggle Modal
 	</button>
 	{#each people as person (person.id)}
