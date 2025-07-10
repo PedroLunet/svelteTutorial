@@ -13,7 +13,7 @@
 </script>
 
 <main>
-	<Modal />
+	<Modal message="I'm a prop" />
 	{#each people as person (person.id)}
 		<div>
 			<h4>{person.name}</h4>
