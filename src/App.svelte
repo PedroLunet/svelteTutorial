@@ -16,10 +16,16 @@
 	const toggleModal = () => {
 		showModal = !showModal;
 	};
+
+	const addPerson = (e) => {
+		const newPerson = e.detail;
+		people = [newPerson, ...people];
+		showModal = false;
+	};
 </script>
 
 <Modal {showModal} on:click={toggleModal}>
-	<AddPersonFrom />
+	<AddPersonFrom on:addPerson={addPerson} />
 </Modal>
 <main>
 	<button on:click={toggleModal}> Toggle Modal </button>
