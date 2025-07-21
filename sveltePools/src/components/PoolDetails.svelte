@@ -66,4 +66,19 @@
 		padding: 10px 20px;
 		display: inline-block;
 	}
+
+	.percent {
+		height: 100%;
+		position: absolute;
+		box-sizing: border-box;
+	}
+
+	.percent-a {
+    border-left: 4px solid #d91b42;
+		background: rgba(217, 27, 66, 0.2);
+	}
+	.percent-b {
+		border-left: 4px solid #45c49c;
+		background: rgba(69, 196, 150, 0.2);
+	}
 </style>
