@@ -1,8 +1,11 @@
 <script>
+	import { createEventDispatcher } from 'svelte';
 	import Button from '../shared/Button.svelte';
 	let fields = { question: '', answerA: '', answerB: '' };
 	let errors = { question: '', answerA: '', answerB: '' };
 	let isValid = false;
+
+	let dispatch = createEventDispatcher();
 
 	const handleSubmit = () => {
 		isValid = true;
@@ -27,7 +30,8 @@
 		}
 
 		if (isValid) {
-			console.log('Form submitted:', fields);
+			let pool = { ...fields, votesA: 0, votesB: 0, id: Math.random() };
+			dispatch('poolCreated', pool);
 		}
 	};
 </script>
