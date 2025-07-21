@@ -1,6 +1,11 @@
 <script>
+	import PoolStore from '../stores/PoolStore.js';
 	import PoolDetails from './PoolDetails.svelte';
 	export let pools = [];
+
+	PoolStore.subscribe((data) => {
+		pools = data;
+	});
 </script>
 
 <div class="pool-list">

@@ -18,25 +18,6 @@
 		activeItem = 'Current Pools';
 	};
 
-	let pools = [
-		{
-			question: 'Is Svelte the best framework?',
-			answerA: 'Yes',
-			answerB: 'No',
-			votesA: 10,
-			votesB: 5,
-			id: 1,
-		},
-		{
-			question: 'Should I learn Svelte?',
-			answerA: 'Absolutely',
-			answerB: 'Maybe',
-			votesA: 8,
-			votesB: 3,
-			id: 2,
-		},
-	];
-
 	const handleVote = (e) => {
 		const { option, id } = e.detail;
 
@@ -56,7 +37,7 @@
 <main>
 	<Tabs {items} {activeItem} on:tabChange={tabChange} />
 	{#if activeItem === 'Current Pools'}
-		<PoolList {pools} on:vote={handleVote} />
+		<PoolList on:vote={handleVote} />
 	{:else if activeItem === 'Add New Pool'}
 		<CreatePoolForm on:poolCreated={handlePoolCreated} />
 	{/if}
