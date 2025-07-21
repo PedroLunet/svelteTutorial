@@ -1,10 +1,11 @@
 <script>
+	import PoolDetails from './PoolDetails.svelte';
 	export let pools = [];
 </script>
 
 <div class="pool-list">
 	{#each pools as pool (pool.id)}
-		<div>{pool.question}</div>
+		<div><PoolDetails {pool} /></div>
 	{/each}
 </div>
 
