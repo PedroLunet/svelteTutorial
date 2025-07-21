@@ -1,12 +1,15 @@
 <script>
-	import { onDestroy } from 'svelte';
+	import { fade, slide, scale } from 'svelte/transition';
+	import { flip } from 'svelte/animate';
 	import PoolStore from '../stores/PoolStore.js';
 	import PoolDetails from './PoolDetails.svelte';
 </script>
 
 <div class="pool-list">
 	{#each $PoolStore as pool (pool.id)}
-		<div><PoolDetails {pool} /></div>
+		<div in:fade out:scale|local animate:flip={{ duration: 500 }}>
+			<PoolDetails {pool} />
+		</div>
 	{/each}
 </div>
 
