@@ -2,6 +2,7 @@
 	import Card from '../shared/Card.svelte';
 	import PoolStore from '../stores/PoolStore';
 	export let pool;
+	import Button from '../shared/Button.svelte';
 
 	const handleVote = (option, id) => {
 		PoolStore.update((pools) => {
@@ -19,6 +20,12 @@
 
 	//Reactive values
 	$: totalVotes = pool.votesA + pool.votesB;
+
+	const handleDelete = (id) => {
+		PoolStore.update((currentPools) => {
+			return currentPools.filter((pool) => pool.id != id);
+		});
+	};
 </script>
 
 <Card>
@@ -45,8 +52,18 @@
 			></div>
 			<span> {pool.answerB} ({pool.votesB})</span>
 		</div>
-	</div>
-</Card>
+		<div class="delete">
+			<Button
+				flat
+				on:click={() => {
+					handleDelete(pool.id);
+				}}
+			>
+				Delete
+			</Button>
+		</div>
+	</div></Card
+>
 
 <style>
 	h3 {
@@ -88,5 +105,9 @@
 	.percent-b {
 		border-left: 4px solid #45c49c;
 		background: rgba(69, 196, 150, 0.2);
+	}
+	.delete {
+		text-align: right;
+		margin-top: 10px;
 	}
 </style>
