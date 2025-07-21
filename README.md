@@ -2,6 +2,11 @@
 
 A collection of Svelte applications built to learn the fundamentals of the Svelte framework. This repository contains two complete projects showcasing different aspects of Svelte development, from basic component patterns to advanced state management and animations.
 
+## 📺 Tutorial Source
+
+Built following the comprehensive Svelte tutorial series by The Net Ninja:
+[**Svelte Tutorial for Beginners**](https://www.youtube.com/playlist?list=PL4cUxeGkcC9hlbrVO_2QFVqVPhlZmz7tO)
+
 ## 🎯 About
 
 This tutorial project demonstrates comprehensive Svelte development through two distinct applications:
