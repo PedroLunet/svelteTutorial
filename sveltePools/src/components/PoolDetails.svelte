@@ -3,6 +3,10 @@
 	import PoolStore from '../stores/PoolStore';
 	export let pool;
 	import Button from '../shared/Button.svelte';
+	import { tweened } from 'svelte/motion';
+
+	const tweenedA = tweened(0);
+	const tweenedB = tweened(0);
 
 	const handleVote = (option, id) => {
 		PoolStore.update((pools) => {
@@ -20,6 +24,15 @@
 
 	//Reactive values
 	$: totalVotes = pool.votesA + pool.votesB;
+	$: {
+		if (totalVotes) {
+			tweenedA.set((pool.votesA / totalVotes) * 100);
+			tweenedB.set((pool.votesB / totalVotes) * 100);
+		} else {
+			tweenedA.set(0);
+			tweenedB.set(0);
+		}
+	}
 
 	const handleDelete = (id) => {
 		PoolStore.update((currentPools) => {
@@ -34,22 +47,12 @@
 		<p>Total Votes: {totalVotes}</p>
 		<!-- svelte-ignore a11y-click-events-have-key-events -->
 		<div class="answer" on:click={() => handleVote('a', pool.id)}>
-			<div
-				class="percent percent-a"
-				style="width: {totalVotes
-					? (pool.votesA / totalVotes) * 100 + '%'
-					: '0%'}"
-			></div>
+			<div class="percent percent-a" style="width: {$tweenedA}%"></div>
 			<span> {pool.answerA} ({pool.votesA})</span>
 		</div>
 		<!-- svelte-ignore a11y-click-events-have-key-events -->
 		<div class="answer" on:click={() => handleVote('b', pool.id)}>
-			<div
-				class="percent percent-b"
-				style="width: {totalVotes
-					? (pool.votesB / totalVotes) * 100 + '%'
-					: '0%'}"
-			></div>
+			<div class="percent percent-b" style="width: {$tweenedB}%"></div>
 			<span> {pool.answerB} ({pool.votesB})</span>
 		</div>
 		<div class="delete">
