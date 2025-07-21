@@ -1,4 +1,5 @@
 <script>
+	import Button from '../shared/Button.svelte';
 	let fields = { question: '', answerA: '', answerB: '' };
 
 	const handleSubmit = () => {
@@ -20,7 +21,7 @@
 		<label for="answer-b">Pool Answer B:</label>
 		<input type="text" id="answer-b" bind:value={fields.answerB} />
 	</div>
-	<button>Create Pool</button>
+	<Button flat type="secondary">Create Pool</Button>
 </form>
 
 <style>
@@ -41,13 +42,5 @@
 		text-align: left;
 		color: orangered;
 		font-weight: bold;
-	}
-	button {
-		background-color: orangered;
-		color: white;
-		border: none;
-		padding: 10px 20px;
-		border-radius: 6px;
-		cursor: pointer;
 	}
 </style>
