@@ -1,6 +1,7 @@
 <script>
 	import Header from './components/Header.svelte';
 	import Footer from './components/Footer.svelte';
+	import CreatePoolForm from './components/CreatePoolForm.svelte';
 	import Tabs from './shared/Tabs.svelte';
 
 	//tabs
@@ -19,7 +20,7 @@
 		<p>Displaying current pools...</p>
 	{:else if activeItem === 'Add New Pool'}
 		<!-- Add New Pool content goes here -->
-		<p>Form to add a new pool...</p>
+		<CreatePoolForm />
 	{/if}
 </main>
 <Footer />
