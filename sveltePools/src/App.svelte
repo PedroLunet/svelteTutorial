@@ -13,23 +13,7 @@
 	};
 
 	const handlePoolCreated = (e) => {
-		const newPool = e.detail;
-		pools = [newPool, ...pools];
 		activeItem = 'Current Pools';
-	};
-
-	const handleVote = (e) => {
-		const { option, id } = e.detail;
-
-		let copiedPools = [...pools];
-		let upvotedPool = copiedPools.find((p) => p.id == id);
-
-		if (option === 'a') {
-			upvotedPool.votesA += 1;
-		} else if (option === 'b') {
-			upvotedPool.votesB += 1;
-		}
-		pools = copiedPools;
 	};
 </script>
 
@@ -37,7 +21,7 @@
 <main>
 	<Tabs {items} {activeItem} on:tabChange={tabChange} />
 	{#if activeItem === 'Current Pools'}
-		<PoolList on:vote={handleVote} />
+		<PoolList />
 	{:else if activeItem === 'Add New Pool'}
 		<CreatePoolForm on:poolCreated={handlePoolCreated} />
 	{/if}

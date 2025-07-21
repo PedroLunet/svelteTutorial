@@ -1,5 +1,6 @@
 <script>
 	import { createEventDispatcher } from 'svelte';
+	import PoolStore from '../stores/PoolStore';
 	import Button from '../shared/Button.svelte';
 	let fields = { question: '', answerA: '', answerB: '' };
 	let errors = { question: '', answerA: '', answerB: '' };
@@ -31,7 +32,10 @@
 
 		if (isValid) {
 			let pool = { ...fields, votesA: 0, votesB: 0, id: Math.random() };
-			dispatch('poolCreated', pool);
+			PoolStore.update((currentPools) => {
+				return [pool, ...currentPools];
+			});
+			dispatch('poolCreated');
 		}
 	};
 </script>

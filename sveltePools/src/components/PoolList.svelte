@@ -6,7 +6,7 @@
 
 <div class="pool-list">
 	{#each $PoolStore as pool (pool.id)}
-		<div><PoolDetails {pool} on:vote /></div>
+		<div><PoolDetails {pool} /></div>
 	{/each}
 </div>
 

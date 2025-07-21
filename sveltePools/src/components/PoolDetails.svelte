@@ -1,12 +1,20 @@
 <script>
-	import { createEventDispatcher } from 'svelte';
 	import Card from '../shared/Card.svelte';
+	import PoolStore from '../stores/PoolStore';
 	export let pool;
 
-	const dispatch = createEventDispatcher();
-
 	const handleVote = (option, id) => {
-		dispatch('vote', { option, id });
+		PoolStore.update((pools) => {
+			let copiedPools = [...pools];
+			let upvotedPool = copiedPools.find((p) => p.id == id);
+
+			if (option === 'a') {
+				upvotedPool.votesA += 1;
+			} else if (option === 'b') {
+				upvotedPool.votesB += 1;
+			}
+			return copiedPools;
+		});
 	};
 
 	//Reactive values
@@ -74,7 +82,7 @@
 	}
 
 	.percent-a {
-    border-left: 4px solid #d91b42;
+		border-left: 4px solid #d91b42;
 		background: rgba(217, 27, 66, 0.2);
 	}
 	.percent-b {
