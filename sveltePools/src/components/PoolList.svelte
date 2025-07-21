@@ -5,7 +5,7 @@
 
 <div class="pool-list">
 	{#each pools as pool (pool.id)}
-		<div><PoolDetails {pool} /></div>
+		<div><PoolDetails {pool} on:vote /></div>
 	{/each}
 </div>
 
